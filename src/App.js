@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Chart } from "react-google-charts";
+
+const options = {
+  hAxis: {
+    title: 'Gün',
+  },
+  vAxis: {
+    title: 'Dolar Kuru',
+  },
+};
+const data = [
+  ['Gün', 'Dolar Kuru'],
+  [1, 5.69],
+  [2, 5.69],
+  [3, 5.68],
+  [4, 5.72],
+  [5, 5.76],
+]
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Chart
+        width={'600px'}
+        height={'400px'}
+        chartType="LineChart"
+        loader={<div>Yükleniyor</div>}
+        data={data}
+        options={options}
+      />
     );
   }
 }
